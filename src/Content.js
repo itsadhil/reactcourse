@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 const Content = () => {
     const [name, setName] = useState('Dave');
+    const [count, setCount] = useState(0);
 
     const handleNameChange = () => {
         const names = ['bob', 'kevin', 'Dave'];
@@ -10,8 +11,9 @@ const Content = () => {
 }
 
 
-    const handleClick2 = (name) => {
-        console.log(`Hello ${name}`)
+    const handleClick2 = (count) => {
+        setCount(count + 1);
+        console.log(`${count}`)
 }
 
     const handleClick3 = (e) => {
@@ -28,7 +30,7 @@ return (
         Hello {name}!
         </p>
         <button onClick={handleNameChange}>Click meh</button>
-        <button onClick ={() => handleClick2('Adhil')}>Name Button</button>
+        <button onClick ={() => handleClick2(count)}>Name Button</button>
         <button onClick ={(e) => handleClick3(e)}>Target Button</button>
         <button onClick ={(e) => handleClick4(e)}>InnerText Target Button</button>
 
