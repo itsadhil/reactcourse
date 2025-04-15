@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
 
 const Content = () => {
-    const [items, setName] = useState([
+    const [items, setItems] = useState([
         {
             id: 1,
-            checked: false,
+            checked: true,
             item: "Chicken"
         },
         {
@@ -35,6 +35,13 @@ const Content = () => {
         }
     ]);
 
+    const handleCheck = (id) => {
+        const listitems = items.map((item) => item.id === id ? { ...item,
+        checked: !item.checked } : item);
+        setItems(listitems);
+        }
+    
+
 return (
     <main>
         <ul>
@@ -42,6 +49,7 @@ return (
                 <li className='item' key={item.id}>
                     <input
                         type = 'checkbox'
+                        onChange={() => handleCheck(item.id)}
                         checked = {item.checked}
                     />
                     <label>{item.item}</label>
